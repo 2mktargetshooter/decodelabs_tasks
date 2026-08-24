@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>2MK.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=TASA+Explorer:wght@400..800&display=swap');
+
+#add,#add2 {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: radial-gradient(circle at center center, rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url("https://lh7-rt.googleusercontent.com/docsz/AD_4nXel3hPQeolNPh__V1wJjc5SH-k5Z7Z0DwYLPkUM287h0ZlEBS59CNciAR7eypVVf5CwEkoTXwTdXOtCiLPZzn_jr_5sjzE5yMO-8zRxzW1LjCkRLTEi61qXdj1XqEfmPOXOAYUj?key=IP1Vwg0F0cB-RbKwJLFL_BdF");
+    background-size: cover;
+    background-attachment: fixed;
+    backdrop-filter: blur(1px);
+}
+
+body::-webkit-scrollbar {
+    width: 7px;
+}
+body::-webkit-scrollbar-thumb {
+    background: rgb(95, 73, 59);
+    background-clip: padding-box;
+}
+body::-webkit-scrollbar-track {
+    background: rgb(69, 46, 33);
+    background-clip: padding-box;
+}
+
+
+
+[popover]::backdrop {
+    backdrop-filter: blur(5px);
+    background: rgba(0,0,0,0.5);
+}
+
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+    height: 230px;
+    width: 250px;
+    font-family: tasa explorer;
+    font-size: 14px;
+    border-radius: 20px;
+    background: rgba(228, 120, 57, 0.5);
+    backdrop-filter: blur(5px);
+    color: white;
+    outline: none;
+    border: solid rgb(228, 120, 57) 1px;
+}
+
+#popup-inner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+#popup-inner h2 {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-family: tasa explorer;
+}
+
+#popup-inner img {
+    height: 80px;
+}
+
+
+
+header {
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    /* border-bottom: solid #dadada 1px; */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    font-family: google sans;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+nav a span {
+    color: rgb(150, 110, 87);
+    font-size: 20px;
+}
+
+nav button {
+    background: none;
+    border: none;
+    outline: none;
+    margin: 0px 20px;
+    margin-right: 10px;
+    font-family: google sans;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+}
+
+nav button:hover {
+    color: rgba(0,0,0,0.7);
+}
+
+nav #sp-btn {
+    padding: 10px 23px;
+    width: 150px;
+    font-family: tasa explorer;
+    font-size: 14px;
+    border-radius: 20px;
+    background: rgba(69, 46, 33, 0.5);
+    backdrop-filter: blur(5px);
+    color: white;
+    outline: none;
+    border: solid rgb(69, 46, 33) 1px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+nav #sp-btn:hover {
+    transform: scale(1.1);
+    border: solid rgb(155, 91, 54) 1px;
+}
+
+#hero {
+    height: 100vh;
+    padding: 20px;
+    padding-top: 90px;
+    display: flex;
+    align-items: flex-start;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#hero article {
+    flex: 50%;
+    padding: 50px;
+}
+
+#hero article h1 {
+    font-size: clamp(1rem, 4vw, 3rem);
+    font-family: tasa explorer;
+}
+
+#hero article p {
+    font-size: 14px;
+    margin-top: 10px;
+    font-family: alata;
+    color: rgb(213, 213, 213);
+}
+
+
+#hero article button {
+    padding: 10px 23px;
+    width: 150px;
+    font-family: tasa explorer;
+    font-size: 14px;
+    border-radius: 20px;
+    background: rgba(228, 120, 57, 0.5);
+    backdrop-filter: blur(5px);
+    color: white;
+    outline: none;
+    border: solid rgb(228, 120, 57) 1px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#hero article button:hover {
+    transform: scale(1.1);
+    border: solid rgb(255, 159, 103) 1px;
+}
+
+#hero aside {
+    flex: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: left;
+    padding-right: 100px;
+}
+
+.sample {
+    height: 140px;
+    width: 190px;
+    border-radius: 10px;
+    padding: 7px;
+    justify-self: right;
+    margin-right: 30px;
+    background: rgba(69, 46, 33, 0.5);
+    backdrop-filter: blur(5px);
+    margin-bottom: 20px;
+    border: solid rgb(69, 46, 33) 1px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.sample:hover {
+    transform: scale(1.1);
+    border: solid rgb(162, 104, 71) 1px;
+}
+
+.sample p {
+    font-size: 13px;
+    font-family: tasa explorer;
+    padding: 5px 0;
+    color: #d6d6d6;
+    letter-spacing: 2px;
+}
+
+.sample .sample-image {
+    height: 100px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.sample:nth-child(1) .sample-image {
+    background: url(https://i.pinimg.com/originals/90/7e/61/907e6137db79eac81c20cc9fcacd6ba4.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.sample:nth-child(2) .sample-image {
+    background: url(https://tse4.mm.bing.net/th/id/OIP.zQp6AG92YTQfvxIUOZCX8QHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3);
+    background-size: cover;
+    background-position: center center;
+}
+
+.sample:nth-child(3) .sample-image {
+    background: url(https://i.pinimg.com/originals/d9/bc/a3/d9bca3639c17c89bff02fed826effd28.png);
+    background-size: cover;
+    background-position: center center;
+}
+
+
+
+#portions-wrapper {
+    padding: 10% 0;
+    background: linear-gradient(to right, rgb(20, 15, 13), rgb(69, 51, 42),rgb(20, 15, 13));
+    color: white;
+}
+
+#portions {
+    width: 70%;
+    max-width: 700px;
+    justify-self: center;
+}
+
+.portion {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+.portion-content {
+    flex: 50%;
+    padding-top: 50px;
+    text-align: left;
+}
+
+.portion-content h2 {
+    font-family: tasa explorer;
+    letter-spacing: 2px;
+    font-size: 13px;
+    color: rgb(150, 110, 87);
+}
+
+.portion-content h3 {
+    font-family: tasa explorer;
+    color: white;
+    font-size: clamp(1rem, 3vw, 2rem);
+}
+
+.portion-content p {
+    font-family: tasa explorer;
+    font-size: 14px;
+    color: rgb(200, 200, 200);
+    margin-top: 15px;
+}
+
+.portion-image {
+    flex: 50%;
+    height: 400px;
+    border-radius: 30px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.portion:nth-child(1) .portion-image {
+    background: radial-gradient(circle at center center, transparent,rgba(20, 15, 13,1)), url(https://i.pinimg.com/originals/90/7e/61/907e6137db79eac81c20cc9fcacd6ba4.jpg);
+    background-size: cover;
+}
+
+.portion:nth-child(2) .portion-image {
+    background: radial-gradient(circle at center center, transparent,rgba(20, 15, 13,1)), url(https://tse4.mm.bing.net/th/id/OIP.zQp6AG92YTQfvxIUOZCX8QHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3);
+    background-size: cover;
+}
+
+.portion:nth-child(3) .portion-image {
+    background: radial-gradient(circle at center center, transparent,rgba(20, 15, 13,1)), url(https://i.pinimg.com/originals/d9/bc/a3/d9bca3639c17c89bff02fed826effd28.png);
+    background-size: cover;
+}
+
+
+
+#quote {
+    padding: 10% 0;
+    text-align: center;
+    background: radial-gradient(ellipse at center center, transparent, rgb(69, 51, 42));
+}
+
+#quote h2 {
+    font-family: google sans;
+    font-size: 3rem;
+    color: white;
+}
+
+#quote h2 span {
+    color: rgb(150, 110, 87);
+    font-size: 3.5rem;
+}
+
+#quote h3 {
+    font-family: google sans;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.8);
+    margin-top: 10px;
+}
+
+
+
+#gap {
+    padding: 100px;
+    background:rgb(20, 15, 13);
+}
+
+
+footer {
+    padding: 10px;
+    background: rgb(20, 15, 13);
+    border-top: solid rgb(59, 44, 38) 1px;
+}
+
+footer h4 {
+    font-size: 14px;
+    font-family: inter;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+}
+
+footer h4 span {
+    color: rgb(150, 110, 87);
+}
+
+
+
+
+
+@media only screen and (max-width: 1000px) {
+    body {
+        background: radial-gradient(circle at center center, rgba(0,0,0,0.7), rgba(0,0,0,1)), url(https://tse4.mm.bing.net/th/id/OIP.vV71t2UV8_Lf0HaKt6JqnQHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3);
+    }
+    
+    #hero {
+        flex-direction: column;
+        padding-top: 90px;
+        padding-bottom: 70px;
+        height: auto;
+    }
+
+    #hero article {
+        text-align: center;
+    }
+
+    #hero aside {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+        padding-right: 0;
+    }
+
+    .sample {
+        margin: 0;
+    }
+
+    .portion {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding-bottom: 100px;
+    }
+
+    .portion-content {
+        padding-top: 20px;
+    }
+
+    .portion:nth-child(1), .portion:nth-child(3) {
+        flex-direction: column-reverse;
+    }
+
+    .portion-image {
+        height: 200px;
+        flex: none;
+        width: 100%;
+    }
+
+}
+
+
+</style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="#">2MK<span>.</span></a>
+        <div id="nav-buttons">
+            <button id="sp-btn" onclick="window.location.href='#portions';">Learn More</button>
+        </div>
+    </nav>
+</header>
+
+
+<div id="popup" popover>
+<div id="popup-inner">
+  <img src="https://media3.giphy.com/media/1wX5TJZPqVw3HhyDYn/giphy.gif">
+  <h2>You just unlocked a new room!</h2>
+</div>
+</div>
+
+
+<main id="hero">
+    <article>
+        <h1>Live, Surrounded by Elegance and Comfort</h1>
+        <p>Find homes where sophisticated interiors, expansive spaces, and exceptional craftsmanship come together to redefine modern luxury.</p>
+        <button popovertarget="popup" onclick="document.getElementById('add').style.display='block';document.getElementById('add2').style.display='flex';">Add Room</button>
+    </article>
+    <aside>
+        <div class="sample" onclick="window.location.href='#lounge';">
+            <div class="sample-image"></div>
+            <p>lounge</p>
+        </div>
+        <div class="sample" onclick="window.location.href='#bedroom';">
+            <div class="sample-image"></div>
+            <p>bedroom</p>
+        </div>
+        <div class="sample" onclick="window.location.href='#add2';" id="add">
+            <div class="sample-image"></div>
+            <p>kitchen</p>
+        </div>
+    </aside>
+</main>
+
+
+<section id="portions-wrapper">
+<div id="portions">
+
+    <section class="portion" id="lounge">
+        <article class="portion-content">
+            <h2>Lounge</h2>
+            <h3>The Heart of the Home</h3>
+            <p>Step into a welcoming lounge designed for comfort, connection, and effortless living. With a spacious atmosphere and a warm, inviting feel, it’s the perfect place to relax after a long day, enjoy meaningful conversations, entertain guests, or simply spend time together. Every detail is designed to create a space that feels both stylish and truly at home.</p>
+        </article>
+        <aside class="portion-image"></aside>
+    </section>
+
+    <section class="portion" id="bedroom">
+        <aside class="portion-image"></aside>
+        <article class="portion-content" style="text-align:right;">
+            <h2>Bedroom</h2>
+            <h3>A Space to Unwind</h3>
+            <p>Create your own peaceful retreat in a bedroom designed around comfort and relaxation. From quiet mornings to restful evenings, this is a space where you can slow down, recharge, and enjoy a sense of calm. Thoughtfully designed to feel cozy yet refined, the bedroom offers the perfect balance of privacy, comfort, and timeless style.</p>
+        </article>
+    </section>
+
+    <section class="portion" id="add2">
+        <article class="portion-content">
+            <h2>Kitchen</h2>
+            <h3>Where Every Moment Begins</h3>
+            <p>More than just a place to cook, the kitchen is a space made for bringing people together. Designed with both style and practicality in mind, it offers an inviting setting for preparing meals, sharing conversations, and enjoying everyday moments. Whether you’re making a quick breakfast or hosting family and friends, the kitchen is designed to make every experience feel effortless and enjoyable.</p>
+        </article>
+        <aside class="portion-image"></aside>
+    </section>
+
+</div>
+</section>
+
+
+<section id="quote">
+    <h2>2MK<span>.</span></h2>
+    <h3>“Everything is designed. Few things are designed well.” <br>- Brian Reed</h3>
+</section>
+
+
+<section id="gap">
+</section>
+
+
+<footer>
+    <h4>Made by <span>Muhammad Musab Khan</span></h4>
+</footer>
+
+
+</body>
+</html>
