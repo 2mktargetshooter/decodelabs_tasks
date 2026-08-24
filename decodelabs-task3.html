@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>2MK.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=TASA+Explorer:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 18
+}
+
+@font-face {
+  font-family: 'Surt Sans';
+  src: url('surt-font/Surt-Expanded-Bold-TRIAL.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Surt Sans M';
+  src: url('surt-font/Surt-Expanded-Medium-TRIAL.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#add,#add2 {
+    display: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    height: 200vh;
+}
+
+body::-webkit-scrollbar {
+    width: 7px;
+}
+body::-webkit-scrollbar-thumb {
+    background: rgb(209, 209, 209);
+    background-clip: padding-box;
+}
+body::-webkit-scrollbar-track {
+    background: rgb(248, 248, 248);
+    background-clip: padding-box;
+}
+
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 5%;
+    z-index: 5;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.scrolled {
+    background-color: black;
+    border-bottom: solid rgba(0, 0, 0, 0.4) 1px;
+}
+
+nav h2 {
+    font-size: 16px;
+    font-family: surt sans;
+    color: white;
+}
+
+nav #icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid rgba(0,0,0,0.2) 1px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    position: relative;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+nav #icon:hover {
+    transform: scale(1.1);
+}
+
+nav #icon span {
+    color: black;
+    font-size: 20px!important;
+}
+
+nav #icon #notif {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 10px;
+    height: 10px;
+    background: red;
+    border-radius: 50%;
+    display: none;
+}
+
+
+main {
+    height: 100vh;
+    padding: 5%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background: radial-gradient(circle at center center, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(https://static.vecteezy.com/system/resources/previews/037/236/239/non_2x/ai-generated-fashion-store-advertisment-background-with-copy-space-free-photo.jpg);
+    background-size: cover;
+    position: relative;
+
+}
+
+#title {
+    width: 50%;
+    justify-self: center;
+}
+
+main #title h1 {
+    font-family: surt sans;
+    font-size: 2.4rem;
+    color: white;
+    text-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+}
+
+/* main #title p {
+    font-family: surt sans m;
+    font-size: 13px;
+    color: white;
+    text-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+    margin-top: 10px;
+} */
+
+main #title button {
+    padding: 8px 17px;
+    border-radius: 20px;
+    background: white;
+    color: black;
+    font-family: surt sans;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+main #title button span {
+    padding-left: 5px;
+}
+
+main #certification {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+    backdrop-filter: blur(2px);
+    background: rgb(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px;
+    width: 160px;
+    box-shadow: rgba(50, 50, 93, 0.4) 0px 50px 100px -20px, rgba(0, 0, 0, 0.5) 0px 30px 60px -30px;
+}
+
+main #certification #icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    background: rgb(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid rgb(215, 215, 215) 1px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    margin-right: 5px;
+}
+
+main #certification #icon span {
+    color: white;
+    font-size: 20px!important;
+}
+
+main #certification h3 {
+    font-size: 13px;
+    color: white;
+    font-family: surt sans m;
+    letter-spacing: 0.1px;
+}
+
+main #certification p {
+    font-size: 9px;
+    color: white;
+    font-family: surt sans m;
+}
+
+
+
+#items {
+    padding: 5%;
+}
+
+#items h2 {
+    font-size: 2.3rem;
+    font-family: surt sans m;
+}
+
+#items h2 span {
+    color: grey;
+}
+
+#items h3 {
+    font-size: 1.5rem;
+    font-family: surt sans m;
+}
+
+#items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 5%;
+    margin-top: 50px;
+}
+
+.item {
+    height: 550px;
+}
+
+.head-img {
+    height: 300px;
+    border-radius: 20px;
+}
+
+.item:nth-child(1) .head-img {
+    background: url(https://m.media-amazon.com/images/I/81FbJ-N37EL._UF894,1000_QL80_.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.item:nth-child(2) .head-img {
+    background: url(https://www.victoriaqueen.com/cdn/shop/files/laure-desk-426489_2048x2048.jpg?v=1714441891);
+    background-size: cover;
+    background-position: center center;
+}
+
+.item:nth-child(3) .head-img {
+    background: url(https://th.bing.com/th/id/R.5f94ea2400835ac873ce0be0526e79c2?rik=eOwfQQ2EofP1lQ&pid=ImgRaw&r=0);
+    background-size: cover;
+    background-position: center center;
+}
+
+.item:nth-child(4) .head-img {
+    background: url(https://tse3.mm.bing.net/th/id/OIP.HSnIGFl8eJRBR4Y90Z7fsQHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3);
+    background-size: cover;
+    background-position: center center;
+}
+
+.item:nth-child(5) .head-img {
+    background: url(https://i.pinimg.com/originals/8d/2c/73/8d2c73036fc2fc56196805d7ad608888.png);
+    background-size: cover;
+    background-position: center center;
+}
+
+.item:nth-child(6) .head-img {
+    background: url(https://tse3.mm.bing.net/th/id/OIP.3DON373cGeBHZMMyxLZ_MQHaHm?r=0&rs=1&pid=ImgDetMain&o=7&rm=3);
+    background-size: cover;
+    background-position: center center;
+}
+
+.item h4 {
+    font-size: 14px;
+    font-family: surt sans;
+    color: grey;
+}
+
+.item p {
+    font-size: 2rem;
+    font-family: inter;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.item button {
+    padding: 7px 15px;
+    border-radius: 14px;
+    margin-top: 20px;
+    background: rgb(239, 239, 239);
+    color: black;
+    font-family: inter;
+    font-size: 14px;
+    outline: none;
+    border: solid rgb(205, 205, 205) 2px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.item button span {
+    padding-left: 10px;
+}
+
+.item button:hover {
+    background: rgb(205, 205, 205);
+    transform: scale(.9);
+}
+
+
+
+
+#cart {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    bottom: 10px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(5px);
+    color: black;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 350px;
+    z-index: 5;
+    font-family: surt sans;
+}
+
+.cart-toggle {
+    display: none;
+}
+
+#close-btn {
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#cart h2 {
+    font-family: inter;
+    font-size: 20px;
+}
+
+#cart-list {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 30px 40px auto 90px;
+    width: 100%;
+    align-items: center;
+}
+
+.cart-item .head-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: green;
+}
+
+.cart-item h3 {
+    font-size: 13px;
+    font-family: inter;
+    color:rgb(90, 90, 90);
+}
+
+.cart-item h4 {
+    font-size: 16px;
+    font-family: inter;
+    text-align: right;
+}
+
+.cart-item b {
+    text-align: left;
+}
+
+.cart-item b span {
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cart-item b span:hover {
+    color: red;
+}
+
+#cart h5 {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: surt sans;
+}
+
+#cart h5 span {
+    font-family: inter;
+    font-size: 19px;
+}
+
+#cart button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    padding: 10px;
+    width: 330px;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    font-family: inter;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#cart button:hover {
+    background-color: white;
+    color: black;
+}
+
+
+
+footer {
+    padding: 10px;
+    background: rgb(239, 239, 239);
+    border-top: solid rgb(239, 239, 239) 1px;
+}
+
+footer h4 {
+    font-size: 14px;
+    font-family: inter;
+    font-weight: 400;
+    text-align: center;
+    color: black;
+}
+
+footer h4 span {
+    color: rgb(150, 110, 87);
+}
+
+</style>
+</head>
+<body>
+
+<header id="header" class>
+    <nav>
+        <h2>2MK.</h2>
+        <div id="icon" onclick="toggleCart(true);">
+            <div id="notif"></div>
+            <span class="material-symbols-outlined">shopping_cart_checkout</span>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div id="title">
+        <h1>The Store That Transforms Your Lifestyle.</h1>
+        <button>Get Started <span class="material-symbols-outlined">arrow_right_alt</span></button>
+    </div>
+    <div id="certification">
+        <div id="icon">
+            <span class="material-symbols-outlined">award_star</span>
+        </div>
+        <div>
+            <h3>Certified</h3>
+        </div>
+    </div>
+</main>
+
+<section id="items">
+
+    <h2>Exclusively for<br><span>premium touch</span></h2>
+
+    <div id="items-grid">
+
+        <div class="item">
+            <div class="head-img"></div>
+            <p class="price">$450.00</p>
+            <h4 class="name">Modern Office Desk</h4>
+            <button class="btn">Add to Cart <span class="material-symbols-outlined">arrow_right_alt</span></button>
+        </div>
+
+        <div class="item">
+            <div class="head-img"></div>
+            <p class="price">$350.00</p>
+            <h4 class="name">Modern Study Desk</h4>
+            <button class="btn">Add to Cart <span class="material-symbols-outlined">arrow_right_alt</span></button>
+        </div>
+
+        <div class="item">
+            <div class="head-img"></div>
+            <p class="price">$1,100.00</p>
+            <h4 class="name">Modern Home Closet</h4>
+            <button class="btn">Add to Cart <span class="material-symbols-outlined">arrow_right_alt</span></button>
+        </div>
+
+        <div class="item">
+            <div class="head-img"></div>
+            <p class="price">$1,500.00</p>
+            <h4 class="name">Modern Office Closet</h4>
+            <button class="btn">Add to Cart <span class="material-symbols-outlined">arrow_right_alt</span></button>
+        </div>
+
+        <div class="item">
+            <div class="head-img"></div>
+            <p class="price">$250.00</p>
+            <h4 class="name">Modern Chair</h4>
+            <button class="btn">Add to Cart <span class="material-symbols-outlined">arrow_right_alt</span></button>
+        </div>
+
+        <div class="item">
+            <div class="head-img"></div>
+            <p class="price">$550.00</p>
+            <h4 class="name">Modern Sofa Set</h4>
+            <button class="btn">Add to Cart <span class="material-symbols-outlined">arrow_right_alt</span></button>
+        </div>
+
+    </div>
+</section>
+
+
+
+<div id="cart" class="cart-toggle">
+    <h2>Shopping Cart</h2>
+    <span id="close-btn" onclick="toggleCart(false);" class="material-symbols-outlined">close</span>
+    <div id="cart-list">
+
+        <!-- <div class="cart-item">
+            <b><span onclick="document.getElementsByClassName('cart-item')[0].remove();" class="material-symbols-outlined">close</span></b>
+            <div class="head-img"></div>
+            <h3 class="name">Modern Sofa Set</h3>
+            <h4 class="price">$550.00</h4>
+        </div> -->
+
+    </div>
+
+    <h5>Total: <span id="total">$0</span></h5>
+    <button>Checkout</button>
+
+</div>
+
+
+
+<footer>
+    <h4>Made by <span>Muhammad Musab Khan</span></h4>
+</footer>
+
+<script>
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("header").classList.add("scrolled");
+  } else {
+    document.getElementById("header").classList.remove("scrolled");
+  }
+}
+
+const items = [
+    {
+        "image": "https://m.media-amazon.com/images/I/81FbJ-N37EL._UF894,1000_QL80_.jpg",
+        "name": "Modern Office Desk",
+        "price": "450.00",
+        "chosen": false
+    },
+    {
+        "image": "https://www.victoriaqueen.com/cdn/shop/files/laure-desk-426489_2048x2048.jpg?v=1714441891",
+        "name": "Modern Study Desk",
+        "price": "350.00",
+        "chosen": false
+    },
+    {
+        "image": "https://th.bing.com/th/id/R.5f94ea2400835ac873ce0be0526e79c2?rik=eOwfQQ2EofP1lQ&pid=ImgRaw&r=0",
+        "name": "Modern Home Closet",
+        "price": "1100.00"
+    },
+    {
+        "image": "https://tse3.mm.bing.net/th/id/OIP.HSnIGFl8eJRBR4Y90Z7fsQHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "name": "Modern Office Closet",
+        "price": "1500.00",
+        "chosen": false
+    },
+    {
+        "image": "https://i.pinimg.com/originals/8d/2c/73/8d2c73036fc2fc56196805d7ad608888.png",
+        "name": "Modern Chair",
+        "price": "250.00",
+        "chosen": false
+    },
+    {
+        "image": "https://tse3.mm.bing.net/th/id/OIP.3DON373cGeBHZMMyxLZ_MQHaHm?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "name": "Modern Sofa Set",
+        "price": "550.00",
+        "chosen": false
+    }
+];
+
+let total = 0;
+let current_item = 0;
+
+let notification = document.getElementById("notif");
+let cart = document.getElementById("cart-list");
+let items_total = document.getElementById("total");
+
+
+document.querySelectorAll(".btn").forEach(item => {
+  item.addEventListener("click", (event) => {
+
+    const index = [...document.querySelectorAll(".btn")]
+      .indexOf(event.currentTarget);
+
+
+    let item_image = items[index].image;
+    let item_name = items[index].name;
+    let item_price = items[index].price;
+    let item_template = `<div class='cart-item' id='item-${current_item}'><b><span onclick="removeItem(${current_item}, ${index});" class="material-symbols-outlined">close</span></b><div class='head-img' style='background:url(${item_image});background-size:cover;'></div><h3 class='name'>${item_name}</h3><h4 class='price'>$${item_price}</h4></div>`;
+
+    if(!items[index].chosen) {
+
+        items[index].chosen = true;
+        total = total + Number(item_price);
+        cart.insertAdjacentHTML("beforeend", item_template);
+        notification.style.display="block";
+        items_total.textContent = "$"+total;
+        current_item += 1;
+
+    } else {
+        alert("Cannot choose 1 item more than once.");
+    }     
+  });
+});
+
+
+function removeItem(index, item_index) {
+    document.getElementById('item-'+index).remove();
+    items[item_index].chosen = false;
+    let price = Number(items[item_index].price);
+    current_item -= 1;
+    total = total - price;
+    items_total.textContent = "$"+total;
+}
+
+function toggleCart() {
+    document.getElementById("cart").classList.toggle("cart-toggle");
+}
+
+</script>
+</body>
+</html>
