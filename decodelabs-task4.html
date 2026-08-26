@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>2MK.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=TASA+Explorer:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #ede1ff;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(400px circle at 70% 70%, rgb(211, 209, 255), transparent 70%), radial-gradient(300px circle at 10% 50%, rgb(236, 207, 253), transparent 70%);
+    animation: bgGlowPulse 11s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+body::-webkit-scrollbar {
+    width: 7px;
+}
+body::-webkit-scrollbar-thumb {
+    background: #9a58fc;
+}
+body::-webkit-scrollbar-track {
+    background: white;
+}
+
+
+#form-wrapper {
+    width: 400px;
+    justify-self: center;
+    margin: 10% auto;
+    padding: 15px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(5px);
+    font-family: google sans;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#form-wrapper h1 {
+    font-size: 2rem;
+}
+
+#form-wrapper h2 {
+    font-size: 14px;
+    margin-top: 10px;
+    color: rgb(145, 76, 255);
+}
+
+#form-wrapper h3 {
+    font-size: 13px;
+    margin: 4px;
+    margin-bottom: 20px;
+    font-family: inter;
+}
+
+#form-wrapper h3 span {
+    color:#9a58fc;
+}
+
+#form {
+    margin-top: 20px;
+}
+
+#form-minors {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#form input {
+    width: 100%;
+    flex: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    color:#361e1c;
+    font-family: var(--second-font);
+    border: solid #dedede 1px;
+    outline: none;
+    background: transparent;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    color:#361e1c;
+    font-family: var(--second-font);
+    border: solid #dedede 1px;
+    outline: none;
+    background: transparent;
+    resize: none;
+    height: 150px;
+    margin-top: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+#form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background:#9a58fc;
+    color:white;
+    font-family: google sans;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#form button:hover {
+    background: #e9d8fe;
+    color: #9a58fc;
+}
+
+#form #response {
+    font-size: 14px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+
+</style>
+</head>
+<body>
+
+
+<div id="form-wrapper">
+
+<h3>2MK<span>.</span></h3>
+<h1>Contact Form</h1>
+
+<form id="form" method="GET">
+    <div id="form-minors">
+        <input type="text" id="name" name="name" placeholder="Enter name">
+        <input type="email" id="email" name="email" aria-invalid="false" placeholder="Enter email">
+    </div>
+    <textarea id="message" name="message" placeholder="Enter message"></textarea>
+    <button type="submit" id="submit">Send Message</button>
+    <p id="response"></p>
+</form>
+
+</div>
+
+<script>
+
+const form = document.getElementById("form");
+const submit = document.getElementById("submit");
+const response = document.getElementById("response");
+
+let name = document.getElementById("name");
+let email = document.getElementById("email");
+let message = document.getElementById("message");
+
+let regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if(name.value.length > 0 && email.value.length > 0 && message.value.length > 0) {
+
+        if(regex_email.test(email.value)) {
+            response.textContent = "Form submitted!";
+            response.style.color = "green";
+
+            email.setAttribute("aria-invalid", "false");
+            email.removeAttribute("aria-describedby", "response");
+            name.setAttribute("aria-invalid", "false");
+            name.removeAttribute("aria-describedby", "response");
+            message.setAttribute("aria-invalid", "false");
+            message.removeAttribute("aria-describedby", "response");
+
+            setTimeout(function() {
+                alert("Name: "+ name.value+"\nEmail:"+email.value+ "\nMessage: "+ message.value);
+            }, 2000)
+            
+        } else {
+            response.textContent = "Invalid email address format.";
+            response.style.color = "red";
+
+            email.setAttribute("aria-invalid", "true");
+            email.setAttribute("aria-describedby", "response");
+        }
+
+    } else {
+        response.textContent = "Fill all fields.";
+        response.style.color = "red";
+
+        email.setAttribute("aria-invalid", "true");
+        email.setAttribute("aria-describedby", "response");
+        name.setAttribute("aria-invalid", "true");
+        name.setAttribute("aria-describedby", "response");
+        message.setAttribute("aria-invalid", "true");
+        message.setAttribute("aria-describedby", "response");
+    }
+})
+
+</script>
+</body>
+</html>
